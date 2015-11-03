@@ -1,12 +1,13 @@
-require 'db_connection'
+require './../database/db_connection'
 require 'active_support/inflector'
-require 'searchable'
-require 'associations'
+require '../model_objects/searchable.rb'
+require '../model_objects/associations.rb'
 
+puts "hello"
 class SQLObject
   extend Searchable
   extend Associatable
-  
+
   def self.columns
     # ...
     data = DBConnection.execute2(<<-SQL).first.map {|col| col.to_sym}
@@ -54,7 +55,7 @@ class SQLObject
       SELECT
         *
       FROM
-       "#{@table_name}"
+       "#{self.table_name}"
     SQL
     self.parse_all(data)
   end
@@ -70,7 +71,7 @@ class SQLObject
       SELECT
         *
       FROM
-       "#{@table_name}"
+       "#{self.table_name}"
       WHERE
         id = :id
     SQL

@@ -1,11 +1,15 @@
 require 'sqlite3'
+require 'byebug'
 # https://tomafro.net/2010/01/tip-relative-paths-with-file-expand-path
 ROOT_FOLDER = File.join(File.dirname(__FILE__), '..')
 
 def findFileType(type)
+  Dir.chdir('../database')
   Dir.entries('.').find {|file_name| file_name.split(".").last == type}
 end
 CATS_SQL_FILE = findFileType('sql')
+
+
 
 def set_up_DB(sqlFile)
   if(findFileType('db').nil?)
@@ -17,6 +21,7 @@ def set_up_DB(sqlFile)
 end
 
 CATS_DB_FILE = set_up_DB(CATS_SQL_FILE)
+
 
 class DBConnection
   def self.open(db_file_name)
