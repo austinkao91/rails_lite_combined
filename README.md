@@ -19,7 +19,7 @@ verb, regex matcher, controller class, and action.
 
 The server can be run by navigating to start_server folder and running ruby server_index.rb in the command line console.
 
-Challenges: 
+**Challenges:** 
 Extracting parameters for the controller was pretty challenging, and required some creativity to figure out how to
 create the nested params hash. Starting from a sample input of 
 
