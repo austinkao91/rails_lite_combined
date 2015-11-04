@@ -3,7 +3,6 @@ require 'active_support/inflector'
 require '../model_objects/searchable.rb'
 require '../model_objects/associations.rb'
 
-puts "hello"
 class SQLObject
   extend Searchable
   extend Associatable
@@ -66,6 +65,7 @@ class SQLObject
   end
 
   def self.find(id)
+    id = id.to_i
     # ...
     data = DBConnection.execute(<<-SQL, id: "#{id}")
       SELECT
@@ -136,7 +136,7 @@ class SQLObject
 
   def save
     # ...
-
     self.id.nil? ? self.insert : self.update
+
   end
 end

@@ -3,6 +3,7 @@ class Params
   def initialize(req, route_params = {})
     @req = req
     @route_params = {}
+
     @route_params.merge!(parse_www_encoded_form(req.query_string)) if req.query_string
     @route_params.merge!(parse_www_encoded_form(req.body)) if req.body
     @route_params.merge!(route_params)
@@ -13,7 +14,7 @@ class Params
   end
 
   def to_s
-    @params.to_s
+    @route_params.to_s
   end
 
   class AttributeNotFoundError < ArgumentError; end;

@@ -1,0 +1,15 @@
+<% if flash["notice"] %>
+  <ul>
+    <% flash["notice"].each do |notice| %>
+      <li>
+        <%= notice %>
+      </li>
+    <% end %>
+  </ul>
+
+<% end %>
+
+<h1><%= @cat.name %></h1>
+
+<p>Name: <%= @cat.name %></p>
+<p>Owner: <%= @cat.human.name %></p>

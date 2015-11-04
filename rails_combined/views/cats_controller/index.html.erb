@@ -1,0 +1,21 @@
+<% if flash["notice"] %>
+  <ul>
+    <% flash["notice"].each do |notice| %>
+      <li>
+        <%= notice %>
+      </li>
+    <% end %>
+  </ul>
+
+<% end %>
+
+<h1>ALL THE CATS</h1>
+
+<ul>
+  <% @cats.each do |cat| %>
+    <li>
+      <a href="/cats/<%= cat.id %>"><%= cat.name %></a>
+    </li>
+  <% end %>
+</ul>
+<a href="/cats/new">New Cat</a>

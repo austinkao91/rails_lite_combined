@@ -1,3 +1,6 @@
+require './../controller_objects/params'
+require './../controller_objects/session'
+require './../controller_objects/flash'
 
 
 class ControllerBase
@@ -33,18 +36,24 @@ class ControllerBase
     @res.body = content
     session.store_session(res)
     @already_built_response = true
+    flash.store_session(res)
   end
 
   def render(template_name)
     class_name = self.class.to_s.split('Controller').first.downcase
     controller_name = "#{class_name}_controller"
-    file = File.read("views/#{controller_name}/#{template_name}.html.erb")
+    file = File.read("./../views/#{controller_name}/#{template_name}.html.erb")
     new_file = ERB.new(file).result(binding)
     render_content(new_file, 'text/html')
+    flash.store_session(res)
   end
 
   def session
     @session ||= Session.new(req)
+  end
+
+  def flash
+    @flash ||= Flash.new(req)
   end
 
   def invoke_action(name)
