@@ -21,7 +21,7 @@ class Params
 
   def parse_www_encoded_form(www_encoded_form)
     parse = URI::decode_www_form(www_encoded_form);
-    # debugger
+
     # parse = www_encoded_form.split(/\=|\&|\|/)
 
     modified_parse = modify_parse(parse)

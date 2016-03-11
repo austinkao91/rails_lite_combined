@@ -12,4 +12,10 @@
 <h1><%= @cat.name %></h1>
 
 <p>Name: <%= @cat.name %></p>
-<p>Owner: <%= @cat.human.name %></p>
+<% if @cat.human %>
+  <% owner = @cat.human.name %>
+<% else %>
+  <% owner = "I'm a stray :(" %>
+<% end %>
+<p>Owner: <%= owner %></p>
+<a href="/cats">Back To Cats</a>

@@ -4,7 +4,11 @@
   </label>
 
   <label>Owner ID
-    <input type="text" name="cat[owner_id]" value="<%= @cat.owner_id %>">
+    <select name="cat[owner_id]">
+      <% @human.each do |p| %>
+        <option value="<%= p.id %>"><%= p.name %></option>
+      <% end %>
+    </select>
   </label>
 
   <input type="submit">
