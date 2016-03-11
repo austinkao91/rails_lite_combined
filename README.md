@@ -1,10 +1,13 @@
 # rails\_lite\_combined
 
-An MVC web server built from scratch using WEBrick, ruby, and SQLite3. A simple cat application can be run by cloning this repository, navigating to the start_server folder and running
+In order to deepen my understanding of Rails, I reconstructed a good number of Rail's features
+from scratch including, but not limited to, ActiveRecord methods, model associations, and session/flash. This entire project is completed using WEBrick, Ruby, and SQLite3.
+
+A simple cat application can be run by cloning this repository, navigating to the start_server folder and running
 
     ruby server_index.rb
 
-in the command console. The application can be quickly viewed by entering localhost:3000 into your browser.
+in the command console. The application can then be viewed by entering localhost:3000 into your browser.
 
 **Challenges:**
 
